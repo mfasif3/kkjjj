@@ -59,14 +59,8 @@ export default function MemberCard({
 
   return (
     <div
-      className={`relative w-[320px] h-[420px] cursor-pointer perspective ${className}`}
+      className={`relative w-full aspect-[1.6/1] cursor-pointer ${className}`}
       onClick={handleFlip}
-      style={{
-        filter: `drop-shadow(0 0 15px rgba(139, 92, 246, 0.5))`,
-      }}
-      role="button"
-      aria-label={isFlipped ? "Flip card to front" : "Flip card to back"}
-      tabIndex={0}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
           handleFlip()
@@ -74,13 +68,18 @@ export default function MemberCard({
       }}
     >
       <motion.div
-        className="w-full h-full relative preserve-3d"
+        className="w-full h-full"
+        initial={false}
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.6, type: "spring" }}
         style={{ transformStyle: "preserve-3d" }}
       >
-        <CardFront id={id} name={name} glowAngle={glowAngle} avatarUrl={avatarUrl} />
-        <CardBack id={id} name={name} issueDate={issueDate} healthScore={healthScore} glowAngle={glowAngle} />
+        <div className="absolute inset-0" style={{ backfaceVisibility: "hidden" }}>
+          <CardFront id={id} name={name} glowAngle={glowAngle} avatarUrl={avatarUrl} />
+        </div>
+        <div className="absolute inset-0" style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}>
+          <CardBack id={id} name={name} issueDate={issueDate} healthScore={healthScore} glowAngle={glowAngle} />
+        </div>
       </motion.div>
     </div>
   )

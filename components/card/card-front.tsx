@@ -16,68 +16,60 @@ interface CardFrontProps {
  */
 export function CardFront({ id, name, glowAngle, avatarUrl, children }: CardFrontProps) {
   return (
-    <div
-      className="absolute w-full h-full backface-hidden rounded-xl bg-gradient-to-br from-[#1a0b2e] to-[#130822] p-1 shadow-xl"
-      style={{ backfaceVisibility: "hidden" }}
-    >
+    <div className="relative w-full h-full rounded-2xl overflow-hidden">
       {/* Card border glow */}
       <div
-        className="absolute inset-0 rounded-xl"
+        className="absolute inset-0 rounded-2xl opacity-75"
         style={{
-          background: `linear-gradient(${glowAngle}deg, ${COLORS.gradient.glow})`,
-          filter: "blur(1.5px)",
-          zIndex: -1,
+          background: `conic-gradient(from ${glowAngle}deg at 50% 50%, ${COLORS.gradient.glow})`,
+          filter: "blur(20px)",
         }}
       />
 
-      <div className="flex flex-col h-full text-white bg-[#0a0a0a] rounded-lg p-5">
-        <div className="flex justify-between items-start">
-          <div className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">
-            GenID
-          </div>
+      {/* Card background */}
+      <div
+        className="absolute inset-[2px] rounded-2xl"
+        style={{
+          background: COLORS.background.cardInner,
+        }}
+      >
+        {/* GenID text */}
+        <div className="absolute top-6 left-6 text-2xl font-bold bg-gradient-to-r from-purple-400 to-violet-600 bg-clip-text text-transparent">
+          GenID
         </div>
 
-        <div className="mt-4 border border-purple-900/50 rounded-lg h-[240px] relative overflow-hidden">
-          {/* Card pattern background */}
-          <div className="absolute inset-0 opacity-40">
-            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-              <pattern id="card-dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                <circle cx="2" cy="2" r="1" fill="#888" opacity="0.3" />
-                <circle cx="10" cy="10" r="1" fill="#888" opacity="0.3" />
-                <circle cx="18" cy="18" r="1" fill="#888" opacity="0.3" />
+        {/* Card pattern background */}
+        <div className="absolute inset-0 opacity-5">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1" />
               </pattern>
-              <rect width="100%" height="100%" fill="url(#card-dots)" />
-            </svg>
-          </div>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
+        </div>
 
-          {/* Avatar image */}
-          {avatarUrl && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative w-full h-full overflow-hidden">
-                <Image
-                  src={avatarUrl || "/placeholder.svg"}
-                  alt="Connected Avatar"
-                  fill
-                  className="object-contain p-2"
-                  priority
-                />
-              </div>
+        {/* Avatar image */}
+        {avatarUrl && (
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48">
+            <div className="relative w-full h-full rounded-lg overflow-hidden border-2 border-gray-800">
+              <Image src={avatarUrl || "/placeholder.svg"} alt="Member avatar" fill className="object-cover" />
             </div>
-          )}
+          </div>
+        )}
 
-          {children}
-        </div>
+        {children}
 
-        <div className="flex-grow"></div>
-
-        <div className="mt-4 flex justify-between items-end">
-          <div className="text-sm text-gray-300">#{id}</div>
+        {/* Bottom info */}
+        <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+          <div className="text-white font-mono text-lg">#{id}</div>
           <div className="text-right">
-            <div className="text-sm font-bold text-purple-400">{name}</div>
+            <div className="text-purple-400 font-semibold text-lg">{name}</div>
           </div>
         </div>
 
-        <div className="mt-2 text-xs text-center text-gray-400">Tap to flip</div>
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-gray-500 text-xs">Tap to flip</div>
       </div>
     </div>
   )

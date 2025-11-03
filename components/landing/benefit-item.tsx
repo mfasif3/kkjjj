@@ -8,9 +8,9 @@ interface BenefitItemProps {
  */
 export function BenefitItem({ text }: BenefitItemProps) {
   return (
-    <li className="flex items-start">
-      <div className="mr-2 mt-1 text-purple-400">•</div>
+    <div className="flex items-start gap-3">
+      <span className="text-purple-400 mt-1">•</span>
       <span className="text-gray-300">{text}</span>
-    </li>
+    </div>
   )
 }

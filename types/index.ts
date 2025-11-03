@@ -9,19 +9,6 @@ export interface CardData {
   healthScore?: number
 }
 
-// Blockchain related types
-// export interface BlockchainData {
-//   tokenId: string
-//   chainId: string
-//   owner: string
-//   metadata: {
-//     id: string
-//     name: string
-//     issueDate: string
-//     healthDataHash?: string
-//   }
-// }
-
 export interface HealthData {
   encryptedData: string
   dataHash: string

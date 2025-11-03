@@ -11,49 +11,50 @@ interface AvatarSectionProps {
  */
 export function AvatarSection({ avatarUrl }: AvatarSectionProps) {
   return (
-    <section className="py-16 md:py-24 bg-[#0a0118] purple-to-black">
-      <div className="container px-4 md:px-6 mx-auto max-w-6xl">
-        <div className="grid gap-12 lg:grid-cols-2 items-center">
-          <div className="flex flex-col space-y-4">
-            <h2 className="text-3xl font-bold tracking-tight text-white">Connect Your Avatar</h2>
-            <p className="text-gray-300">
+    <section className="relative py-24 bg-black overflow-hidden">
+      <div className="container px-4 md:px-6 mx-auto max-w-6xl relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left content */}
+          <div className="space-y-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-white">Connect Your Avatar</h2>
+            <p className="text-lg text-gray-400 leading-relaxed">
               With GenID, you can connect your virtual avatar to the GrowGen world, creating a seamless experience
               between your real-world fitness journey and your virtual presence.
             </p>
 
-            <ul className="space-y-2 mt-4">
-              <li className="flex items-start">
-                <div className="mr-2 text-purple-400">•</div>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <span className="text-purple-400 mt-1">•</span>
                 <span className="text-gray-300">Customize your avatar based on your real fitness achievements</span>
               </li>
-              <li className="flex items-start">
-                <div className="mr-2 text-purple-400">•</div>
+              <li className="flex items-start gap-3">
+                <span className="text-purple-400 mt-1">•</span>
                 <span className="text-gray-300">
                   Unlock special avatar features as you progress in your fitness journey
                 </span>
               </li>
-              <li className="flex items-start">
-                <div className="mr-2 text-purple-400">•</div>
+              <li className="flex items-start gap-3">
+                <span className="text-purple-400 mt-1">•</span>
                 <span className="text-gray-300">Participate in virtual fitness challenges with your avatar</span>
               </li>
-              <li className="flex items-start">
-                <div className="mr-2 text-purple-400">•</div>
+              <li className="flex items-start gap-3">
+                <span className="text-purple-400 mt-1">•</span>
                 <span className="text-gray-300">Connect with other fitness enthusiasts in the GrowGen world</span>
               </li>
             </ul>
-            <div className="pt-4">
-              <Button className="bg-purple-600 hover:bg-purple-700 text-white">Learn More</Button>
-            </div>
+
+            <Button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-6 text-lg rounded-xl">
+              Learn More
+            </Button>
           </div>
-          <div className="flex justify-center">
-            <div className="relative w-[300px] h-[400px]">
-              <Image
-                src={avatarUrl || "/placeholder.svg"}
-                alt="Fitness Avatar"
-                fill
-                className="object-contain"
-                priority
-              />
+
+          {/* Right content - Avatar image */}
+          <div className="flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-md aspect-square">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-violet-500/20 rounded-3xl blur-3xl" />
+              <div className="relative w-full h-full rounded-3xl overflow-hidden border border-purple-500/20">
+                <Image src={avatarUrl || "/placeholder.svg"} alt="Avatar" fill className="object-cover" />
+              </div>
             </div>
           </div>
         </div>
