@@ -1,0 +1,26 @@
+/* Add subtle transitions between sections */
+.section-transition {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Purple to black transition */
+.purple-to-black {
+  background: linear-gradient(to bottom, #0a0118 0%, #0a0118 85%, #000000 100%);
+}
+
+/* Black to purple transition */
+.black-to-purple {
+  background: linear-gradient(to bottom, #000000 0%, #000000 85%, #0a0118 100%);
+}
+
+/* Add subtle divider between sections */
+.section-divider {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Remove the divider that was previously used */
+.section-divider::after {
+  display: none;
+}
