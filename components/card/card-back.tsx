@@ -20,7 +20,7 @@ export function CardBack({ id, name, issueDate, healthScore = 72, glowAngle }: C
         }}
       />
 
-      {/* Card background */}
+      {/* Card background - Match exact padding: p-8 */}
       <div className="absolute inset-[2px] rounded-2xl bg-[#0a0a0a] p-8">
         <div className="flex flex-col h-full">
           <div className="flex items-center gap-2 mb-6">

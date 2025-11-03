@@ -26,14 +26,14 @@ export function CardFront({ id, name, glowAngle, avatarUrl, children }: CardFron
         }}
       />
 
-      {/* Card background */}
+      {/* Card background - Match exact inset and background from reference */}
       <div
         className="absolute inset-[2px] rounded-2xl"
         style={{
           background: COLORS.background.cardInner,
         }}
       >
-        {/* GenID text */}
+        {/* GenID text - Match exact positioning: top-6 left-6 text-2xl */}
         <div className="absolute top-6 left-6 text-2xl font-bold bg-gradient-to-r from-purple-400 to-violet-600 bg-clip-text text-transparent">
           GenID
         </div>
@@ -50,7 +50,7 @@ export function CardFront({ id, name, glowAngle, avatarUrl, children }: CardFron
           </svg>
         </div>
 
-        {/* Avatar image */}
+        {/* Avatar image - Match exact sizing and positioning: w-48 h-48 centered */}
         {avatarUrl && (
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48">
             <div className="relative w-full h-full rounded-lg overflow-hidden border-2 border-gray-800">
@@ -61,7 +61,7 @@ export function CardFront({ id, name, glowAngle, avatarUrl, children }: CardFron
 
         {children}
 
-        {/* Bottom info */}
+        {/* Bottom info - Match exact positioning: bottom-6 left-6 right-6 */}
         <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
           <div className="text-white font-mono text-lg">#{id}</div>
           <div className="text-right">

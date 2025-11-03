@@ -61,7 +61,7 @@ export function HeroSection({ avatarUrl, onCardFlip }: HeroSectionProps) {
             </div>
           </div>
 
-          {/* Right content - Card */}
+          {/* Right content - Card - Match exact card container: w-full max-w-md */}
           <div className="flex justify-center lg:justify-end">
             <div className="w-full max-w-md">
               <MemberCard

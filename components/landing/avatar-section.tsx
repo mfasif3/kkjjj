@@ -48,7 +48,7 @@ export function AvatarSection({ avatarUrl }: AvatarSectionProps) {
             </Button>
           </div>
 
-          {/* Right content - Avatar image */}
+          {/* Right content - Avatar image - Match exact container: w-full max-w-md aspect-square */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative w-full max-w-md aspect-square">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-violet-500/20 rounded-3xl blur-3xl" />
